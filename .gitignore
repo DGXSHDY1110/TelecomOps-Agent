@@ -1,0 +1,62 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Environment
+.env
+.venv/
+venv/
+env/
+*.log
+
+# IDE
+.vscode/
+.idea/
+.DS_Store
+
+# Temporary
+_archive/
+tmp/
+temp/
+*.tmp
+
+# Data
+data/raw/
+data/interim/
+data/processed/
+*.csv
+*.jsonl
+*.parquet
+*.sqlite
+*.db
+
+# Model files
+models/
+checkpoints/
+outputs/checkpoints/
+outputs/exported/
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.onnx
+*.engine
+*.bin
+
+# Experiment outputs
+runs/
+wandb/
+mlruns/
+outputs/logs/
+
+# Secrets
+.env
+*.key
+*.pem
+config/secrets.yaml
+*.zip

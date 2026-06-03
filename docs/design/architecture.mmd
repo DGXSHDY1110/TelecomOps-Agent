@@ -1,0 +1,63 @@
+flowchart TD
+    U[User / NOC Engineer] --> API[FastAPI Service]
+    API --> AUTH[Auth / Request Validation]
+    AUTH --> LG[LangGraph Agent Workflow]
+
+    LG --> IG[Input Guard]
+    IG --> IC[Intent Classifier]
+    IC --> EE[Entity Extractor]
+    EE --> PL[Planner]
+    PL --> TR[Tool Router]
+
+    TR --> RAG[RAG Retrieval Tool]
+    TR --> SQL[PostgreSQL KPI Tool]
+    TR --> KG[Neo4j Graph Tool]
+    TR --> CASE[Historical Case Tool]
+    TR --> OSS[Mock OSS API Tool]
+
+    RAG --> EMB[Embedding Model]
+    EMB --> VDB[(FAISS / Milvus)]
+    SQL --> PG[(PostgreSQL KPI DB)]
+    KG --> NEO[(Neo4j Telecom Graph)]
+    CASE --> CASEDB[(Vector Case Library)]
+    OSS --> OSSDB[(Mock OSS Data)]
+
+    RAG --> EF[Evidence Fusion]
+    SQL --> EF
+    KG --> EF
+    CASE --> EF
+    OSS --> EF
+
+    EF --> DR[Diagnosis Reasoner]
+    DR --> REF{Reflection: Enough Evidence?}
+
+    REF -- No: Need More Evidence --> TR
+    REF -- Yes --> RG[Report Generator]
+    RG --> OUT[Structured Diagnosis Report]
+    OUT --> API
+    API --> U
+
+    LG --> TRACE[(Trace Store)]
+    API --> FB[Feedback API]
+    FB --> EVAL[(Evaluation Dataset)]
+    EVAL --> METRIC[Metrics Dashboard]
+
+    subgraph Data Sources
+      PG
+      NEO
+      VDB
+      CASEDB
+      OSSDB
+    end
+
+    subgraph Agent Core
+      IG
+      IC
+      EE
+      PL
+      TR
+      EF
+      DR
+      REF
+      RG
+    end
