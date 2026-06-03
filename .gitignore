@@ -1,3 +1,4 @@
+cat > .gitignore <<'EOF'
 # Python
 __pycache__/
 *.py[cod]
@@ -6,57 +7,49 @@ __pycache__/
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
+.coverage
+htmlcov/
 
-# Environment
+# Env
 .env
+.env.*
+!.env.example
 .venv/
 venv/
 env/
-*.log
+
+# Conda
+*.conda
 
 # IDE
 .vscode/
 .idea/
-.DS_Store
-
-# Temporary
-_archive/
-tmp/
-temp/
-*.tmp
 
 # Data
 data/raw/
-data/interim/
-data/processed/
-*.csv
-*.jsonl
-*.parquet
-*.sqlite
+data/generated/
+data/mock_kpi/*.csv
+data/mock_alarms/*.csv
+data/cases/*.jsonl
+!data/.gitkeep
+!data/documents/.gitkeep
+!data/mock_kpi/.gitkeep
+!data/mock_alarms/.gitkeep
+!data/cases/.gitkeep
+
+# Logs / outputs
+logs/
+outputs/
+reports/
+*.log
+
+# Database
 *.db
-
-# Model files
-models/
-checkpoints/
-outputs/checkpoints/
-outputs/exported/
-*.pt
-*.pth
-*.ckpt
-*.safetensors
-*.onnx
-*.engine
-*.bin
-
-# Experiment outputs
-runs/
-wandb/
-mlruns/
-outputs/logs/
+*.sqlite
+*.sqlite3
 
 # Secrets
-.env
-*.key
 *.pem
-config/secrets.yaml
-*.zip
+*.key
+id_rsa*
+EOF
