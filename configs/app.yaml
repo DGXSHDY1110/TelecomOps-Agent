@@ -1,0 +1,42 @@
+# ============================================
+# TelecomOps-Agent Application Configuration
+# ============================================
+
+app:
+  name: "TelecomOps-Agent"
+  version: "0.1.0"
+  debug: false
+
+api:
+  host: "0.0.0.0"
+  port: 8000
+  cors_origins:
+    - "*"
+
+# LangGraph workflow config (future milestones)
+workflow:
+  max_retries: 2
+  timeout_seconds: 120
+  enable_reflection: true
+
+# Tool config (future milestones)
+tools:
+  sql:
+    enabled: false
+    safe_mode: true
+    max_rows: 1000
+  graph:
+    enabled: false
+    max_hops: 3
+  rag:
+    enabled: false
+    top_k: 5
+    score_threshold: 0.5
+  case_search:
+    enabled: false
+    top_k: 3
+
+# Logging
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
